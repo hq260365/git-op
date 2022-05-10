@@ -7,11 +7,13 @@ OpenWRT原版编译
 
 首次编译
   
-  git clone https://github.com/openwrt/openwrt -b openwrt-21.02 openwrt
-    cd openwrt
-    sed -i '$a src-git NueXini_Packages https://github.com/NueXini/NueXini_Packages.git' feeds.conf.default
-    ./scripts/feeds update -a
-    ./scripts/feeds install -a
+    git clone https://github.com/openwrt/openwrt -b openwrt-21.02 openwrt
+   
+   cd openwrt
+   
+   sed -i '$a src-git NueXini_Packages https://github.com/NueXini/NueXini_Packages.git' feeds.conf.default
+   
+   ./scripts/feeds update -a && ./scripts/feeds install -a
     cp /usr/bin/upx staging_dir/host/bin
     cp /usr/bin/upx-ucl staging_dir/host/bin
     ./scripts/feeds update -a && ./scripts/feeds install -a
