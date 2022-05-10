@@ -33,38 +33,24 @@ OpenWRT原版编译
 
 第二次及后续编译
 
-cd openwrt
+    cd openwrt
+    git pull
+    ./scripts/feeds update -a && ./scripts/feeds install -a
+    make menuconfig
+    make -j8 download
+    make -j$(($(nproc) + 1)) V=s
 
-git pull
+ 重新配置：
 
-./scripts/feeds update -a && ./scripts/feeds install -a
-
-make menuconfig
-
-make -j8 download
-
-make -j$(($(nproc) + 1)) V=s
-
-重新配置：
-
-rm -rf ./tmp && rm -rf .config
-
-make menuconfig
-
-make -j8 download
-
-make -j$(($(nproc) + 1)) V=s
-
-
-cd lede/package/lean/  
-
-git clone https://github.com/jerrykuku/lua-maxminddb.git  #git lua-maxminddb 依赖
-
-git clone https://github.com/jerrykuku/luci-app-vssr.git  
-
-make menuconfig
-
-make -j1 V=s
+    rm -rf ./tmp && rm -rf .config
+    make menuconfig
+    make -j8 download
+    make -j$(($(nproc) + 1)) V=s
+    cd lede/package/lean/  
+    git clone https://github.com/jerrykuku/lua-maxminddb.git  #git lua-maxminddb 依赖
+    git clone https://github.com/jerrykuku/luci-app-vssr.git  
+    make menuconfig
+    make -j1 V=s
 
 
 
@@ -72,13 +58,10 @@ v2raya使用前配置
 
 # For advanced usage, please see /etc/config/v2raya
 
-uci set v2raya.config.enabled='1'
-
-uci commit v2raya
-
-/etc/init.d/v2raya start
-
-http://openwrt.lan:2017
+    uci set v2raya.config.enabled='1'
+    uci commit v2raya
+    /etc/init.d/v2raya start
+    http://openwrt.lan:2017
 
 
 主题
