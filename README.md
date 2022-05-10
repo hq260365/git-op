@@ -14,15 +14,23 @@ OpenWRT原版编译
    sed -i '$a src-git NueXini_Packages https://github.com/NueXini/NueXini_Packages.git' feeds.conf.default
    
    ./scripts/feeds update -a && ./scripts/feeds install -a
+    
     cp /usr/bin/upx staging_dir/host/bin
+    
     cp /usr/bin/upx-ucl staging_dir/host/bin
+    
     ./scripts/feeds update -a && ./scripts/feeds install -a
+    
     make menuconfig  #此处可以直接下载.config文件使用
+    
     make -j8 download V=s
+    
     make -j1 V=s
 
 
-cp /usr/bin/upx staging_dir/host/bin cp /usr/bin/upx-ucl staging_dir/host/bin 是解决编译原版OpenWRT加入科学插件报错的，如果用的Lean大改编OpenWRT，则不需要。
+    cp /usr/bin/upx staging_dir/host/bin 
+
+    cp /usr/bin/upx-ucl staging_dir/host/bin #是解决编译原版OpenWRT加入科学插件报错的，如果用的Lean大改编OpenWRT，则不需要。
 
 第二次及后续编译
 
