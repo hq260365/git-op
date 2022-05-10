@@ -6,6 +6,7 @@ OpenWRT原版编译学习笔记
     sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3 python2.7 unzip zlib1g-dev lib32gcc-s1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf wget curl swig rsync build-essential ccache ecj fastjar file g++ gawk gettext git java-propose-classpath libelf-dev libncurses5-dev libncursesw5-dev libssl-dev python python2.7-dev python3 unzip wget python3-distutils python3-setuptools python3-dev rsync subversion swig time xsltproc zlib1g-dev
 
 首次编译
+
       下载openwrt-v19.07.10
        wget https://github.com/openwrt/openwrt/archive/refs/tags/v19.07.10.tar.gz
             https://github.com/openwrt/openwrt/archive/refs/tags/v21.02.3.tar.gz
