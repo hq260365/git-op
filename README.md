@@ -1,24 +1,24 @@
-OpenWRT原版编译
+OpenWRT原版编译学习笔记
 ----------------------------------------------------------------------------------------
  安装依赖
 
     sudo apt-get update
-    sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3 python2.7 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf wget curl swig rsync build-essential ccache ecj fastjar file g++ gawk gettext git java-propose-classpath libelf-dev libncurses5-dev libncursesw5-dev libssl-dev python python2.7-dev python3 unzip wget python3-distutils python3-setuptools python3-dev rsync subversion swig time xsltproc zlib1g-dev
+    sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3 python2.7 unzip zlib1g-dev lib32gcc-s1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf wget curl swig rsync build-essential ccache ecj fastjar file g++ gawk gettext git java-propose-classpath libelf-dev libncurses5-dev libncursesw5-dev libssl-dev python python2.7-dev python3 unzip wget python3-distutils python3-setuptools python3-dev rsync subversion swig time xsltproc zlib1g-dev
 
 首次编译
-  
-    git clone https://github.com/openwrt/openwrt -b openwrt-21.02 openwrt
+       https://github.com/openwrt/openwrt/tags
+       wget https://github.com/openwrt/openwrt/archive/refs/tags/v19.07.10.tar.gz
+    （git clone https://github.com/openwrt/openwrt -b openwrt-21.02 openwrt）
     cd openwrt
     sed -i '$a src-git NueXini_Packages https://github.com/NueXini/NueXini_Packages.git' feeds.conf.default
     ./scripts/feeds update -a && ./scripts/feeds install -a
     cp /usr/bin/upx staging_dir/host/bin
-    cp /usr/bin/upx-ucl staging_dir/host/bin
+    cp /usr/bin/upx-ucl staging_dir/host/bin #是解决编译原版OpenWRT加入科学插件报错的，如果用的Lean大改编OpenWRT，则不需要。
     ./scripts/feeds update -a && ./scripts/feeds install -a
     make menuconfig  #此处可以直接下载.config文件使用
     make -j8 download V=s
     make -j1 V=s
-    cp /usr/bin/upx staging_dir/host/bin 
-    cp /usr/bin/upx-ucl staging_dir/host/bin #是解决编译原版OpenWRT加入科学插件报错的，如果用的Lean大改编OpenWRT，则不需要。
+     
 
 第二次及后续编译
 
