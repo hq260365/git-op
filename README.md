@@ -7,13 +7,18 @@ OpenWRT原版编译学习笔记
 
 首次编译
 
-      下载openwrt-v19.07.10
-       wget https://github.com/openwrt/openwrt/archive/refs/tags/v19.07.10.tar.gz
-            https://github.com/openwrt/openwrt/archive/refs/tags/v21.02.3.tar.gz
-       解压后
-       cd openwrt
-    sed -i '$a src-git NueXini_Packages https://github.com/NueXini/NueXini_Packages.git' feeds.conf.default #选择插件源
+    下载openwrt-v19.07.10
+     wget https://github.com/openwrt/openwrt/archive/refs/tags/v19.07.10.tar.gz
+          https://github.com/openwrt/openwrt/archive/refs/tags/v21.02.3.tar.gz
+     解压到openwrt目录
+    cd openwrt
+    选择插件源
+    sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+    sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
+    或
+    sed -i '$a src-git NueXini_Packages https://github.com/NueXini/NueXini_Packages.git' feeds.conf.default 
     ./scripts/feeds update -a && ./scripts/feeds install -a
+    替换upx
     cp /usr/bin/upx staging_dir/host/bin
     cp /usr/bin/upx-ucl staging_dir/host/bin #是解决编译原版OpenWRT加入科学插件报错的，如果用的Lean大改编OpenWRT，则不需要。
     替换golang  openwrt/feeds/pakages/lang/golang
@@ -30,7 +35,6 @@ OpenWRT原版编译学习笔记
 第二次及后续编译
 
     cd openwrt
-    git pull
     ./scripts/feeds update -a && ./scripts/feeds install -a
     make menuconfig
     make -j8 download
