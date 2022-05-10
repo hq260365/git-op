@@ -6,15 +6,21 @@ OpenWRT原版编译学习笔记
     sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3 python2.7 unzip zlib1g-dev lib32gcc-s1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf wget curl swig rsync build-essential ccache ecj fastjar file g++ gawk gettext git java-propose-classpath libelf-dev libncurses5-dev libncursesw5-dev libssl-dev python python2.7-dev python3 unzip wget python3-distutils python3-setuptools python3-dev rsync subversion swig time xsltproc zlib1g-dev
 
 首次编译
-       https://github.com/openwrt/openwrt/tags
+      下载openwrt-v19.07.10
        wget https://github.com/openwrt/openwrt/archive/refs/tags/v19.07.10.tar.gz
-    （git clone https://github.com/openwrt/openwrt -b openwrt-21.02 openwrt）
-    cd openwrt
-    sed -i '$a src-git NueXini_Packages https://github.com/NueXini/NueXini_Packages.git' feeds.conf.default
+            https://github.com/openwrt/openwrt/archive/refs/tags/v21.02.3.tar.gz
+       解压后
+       cd openwrt
+    sed -i '$a src-git NueXini_Packages https://github.com/NueXini/NueXini_Packages.git' feeds.conf.default #选择插件源
     ./scripts/feeds update -a && ./scripts/feeds install -a
     cp /usr/bin/upx staging_dir/host/bin
     cp /usr/bin/upx-ucl staging_dir/host/bin #是解决编译原版OpenWRT加入科学插件报错的，如果用的Lean大改编OpenWRT，则不需要。
-    ./scripts/feeds update -a && ./scripts/feeds install -a
+    替换golang  openwrt/feeds/pakages/lang/golang
+    修改IP地址  package/base-files/files/bin/config_generate
+                  set network.$1.gateway='192.168.1.1'
+                  set network.$1.dns='127.0.0.1 223.5.5.5 8.8.8.8'
+                package/kernel/linux/files/sysctl-nf-conntrack.conf
+                   net.netfilter.nf_conntrack_max=65535
     make menuconfig  #此处可以直接下载.config文件使用
     make -j8 download V=s
     make -j1 V=s
