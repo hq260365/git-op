@@ -21,7 +21,7 @@ OpenWRT原版编译学习笔记
     替换upx
     cp /usr/bin/upx staging_dir/host/bin
     cp /usr/bin/upx-ucl staging_dir/host/bin #是解决编译原版OpenWRT加入科学插件报错的，如果用的Lean大改编OpenWRT，则不需要。
-    替换golang  openwrt/feeds/pakages/lang/golang
+    替换golang(官方源已更新)  openwrt/feeds/pakages/lang/golang
     修改IP地址  package/base-files/files/bin/config_generate
                   set network.$1.gateway='192.168.1.1'
                   set network.$1.dns='127.0.0.1 223.5.5.5 8.8.8.8'
