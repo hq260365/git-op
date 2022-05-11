@@ -1,6 +1,6 @@
 # SmartDns设置
 - - -
-###ssh到openwrt修改/etc/conffig/smartdns
+#ssh到openwrt修改/etc/conffig/smartdns
 _ _ _
 
     config smartdns
@@ -110,7 +110,7 @@ _ _ _
 * * *
 
 - - -
-###修改/etc/smartdns／address.conf
+#修改/etc/smartdns／address.conf
 _ _ _
 
     address /dns.alidns.com/223.5.5.5
